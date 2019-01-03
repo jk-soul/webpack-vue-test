@@ -1,0 +1,43 @@
+{
+  "editor.formatOnSave": false,
+  "files.exclude": {
+    "node_modules": true
+  },
+  // 使用插件格式化 html
+  "vetur.format.defaultFormatter.html": "js-beautify-html",
+  // 屏蔽vetur的js格式化
+  "vetur.format.defaultFormatter.js": "none",
+  // 强制单引号
+  "prettier.singleQuote": true,
+  // 尽可能控制尾随逗号的打印
+  "prettier.trailingComma": "all",
+  // 开启 eslint 支持
+  "prettier.eslintIntegration": true,
+  // 保存时自动fix
+  "eslint.autoFixOnSave": true,
+  // 添加 vue 支持
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "vetur.format.defaultFormatter": {
+    "html": "prettier",
+    "css": "prettier",
+    "postcss": "prettier",
+    "scss": "prettier",
+    "less": "prettier",
+    "js": "prettier",
+    "ts": "prettier",
+    "stylus": "stylus-supremacy"
+  },
+  // 格式化stylus, 需安装Manta's Stylus Supremacy插件
+  "stylusSupremacy.insertColons": false, // 是否插入冒号
+  "stylusSupremacy.insertSemicolons": true, // 是否插入分好
+  "stylusSupremacy.insertBraces": false, // 是否插入大括号
+  "stylusSupremacy.insertNewLineAroundImports": false, // import之后是否换行
+  "stylusSupremacy.insertNewLineAroundBlocks": false
+}

@@ -2,7 +2,11 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
-process.env.npm_config_report = true
+
+let args = process.argv
+if (args && args[2] && args[2].test(/npm_config_report/)) {
+  process.env.npm_config_report = true
+}
 
 const ora = require('ora')
 const rm = require('rimraf')

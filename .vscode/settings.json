@@ -1,5 +1,5 @@
 {
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "files.exclude": {
     "node_modules": true
   },
@@ -30,7 +30,7 @@
     "postcss": "prettier",
     "scss": "prettier",
     "less": "prettier",
-    "js": "prettier",
+    "js": "eslint",
     "ts": "prettier",
     "stylus": "stylus-supremacy"
   },

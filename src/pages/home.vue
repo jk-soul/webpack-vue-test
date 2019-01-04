@@ -35,11 +35,12 @@
           stripe
           style="width: 100%"
         >
-         <el-table-column
-          label="月份"
-          width="80"
-          type="index"
-          :index="indexMethod">
+          <el-table-column
+            label="月份"
+            width="80"
+            type="index"
+            :index="indexMethod"
+          >
           </el-table-column>
           <el-table-column
             v-for="(column,index) in columns"
@@ -68,7 +69,7 @@ export default {
         // 减免
         remit: 0, // 1000,
         // 年终奖
-        awards: 0// 66000
+        awards: 0 // 66000
       },
       taxRateChart: [
         // 税率上限 税率 速算扣除数
@@ -161,10 +162,21 @@ export default {
     },
     getMonthRecord (data, month) {
       // 预扣预缴应纳税所得额（月） 总交税额
-      let {monthShouldTax, sumShouldTax, sumTax, awards, averageAwards} = data
+      let {
+        monthShouldTax,
+        sumShouldTax,
+        sumTax,
+        awards,
+        averageAwards
+      } = data
       let source = this.source
       if (!monthShouldTax) {
-        let temp = source.pay - source.insurance - source.remit - source.base + averageAwards
+        let temp =
+          source.pay -
+          source.insurance -
+          source.remit -
+          source.base +
+          averageAwards
         monthShouldTax = data.monthShouldTax = temp > 0 ? Number(temp) : 0
       }
       // 最后一月添加奖金
@@ -219,7 +231,7 @@ export default {
     .data-source {
       padding-right: 10px;
       flex: 0;
-      flex-basis:500px;
+      flex-basis: 500px;
     }
     .data-table {
     }

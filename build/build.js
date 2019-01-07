@@ -1,10 +1,10 @@
 'use strict'
 require('./check-versions')()
+const utils = require('./utils')
 
 process.env.NODE_ENV = 'production'
 
-let args = process.argv
-if (args && args[2] && args[2].test(/npm_config_report/)) {
+if (utils.getEnvVariable('npm_config_report')) {
   process.env.npm_config_report = true
 }
 

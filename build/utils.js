@@ -5,9 +5,10 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
 
 exports.assetsPath = function (_path) {
-  const assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  const assetsSubDirectory =
+    process.env.NODE_ENV === 'production'
+      ? config.build.assetsSubDirectory
+      : config.dev.assetsSubDirectory
 
   return path.posix.join(assetsSubDirectory, _path)
 }
@@ -31,7 +32,9 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+    const loaders = options.usePostCSS
+      ? [cssLoader, postcssLoader]
+      : [cssLoader]
 
     if (loader) {
       loaders.push({
@@ -98,4 +101,29 @@ exports.createNotifierCallback = () => {
       icon: path.join(__dirname, 'logo.png')
     })
   }
+}
+
+/**
+ * 提取命令行中的变量，使用后行断言
+ * @argument str:变量名
+ * @returns  result:变量对应的结果或undefind
+ */
+exports.getEnvVariable = str => {
+  let args = process.argv
+  console.log(args)
+  if (!str || !args || !args.length) return
+  let result
+  let regStr = `(?<=${str + '='})[\\S\\s]*$`
+  let reg = new RegExp(regStr)
+  for (let arg of args) {
+    if (reg.test(arg)) {
+      result = reg.exec(arg)[0]
+    }
+  }
+  if (result === 'true') {
+    result = true
+  } else if (result === 'false') {
+    result = false
+  }
+  return result
 }

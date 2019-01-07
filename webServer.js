@@ -1,5 +1,6 @@
 var express = require('express') // 引入express模块
 var app = express() // express对象
+const utils = require('./build/utils')
 const testStr = {
   name: 'matt',
   sex: 'male',
@@ -7,7 +8,8 @@ const testStr = {
   skills: ['js', 'ts', 'css', 'html', 'node']
 } // 版本检查返回的数据，假数据，自行修改
 let port = 3030
-console.log(process.argv)
+console.log(utils.getEnvVariable('node_env'))
+
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header(
@@ -22,5 +24,5 @@ app.use(express.static('dist'))
 
 app.listen(port, function () {
   // 服务端口监听
-  console.log(`server now listening at port ${port}`)
+  console.log(`server now listening at port http://localhost:${port}`)
 })
